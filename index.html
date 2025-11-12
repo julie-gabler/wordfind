@@ -5,12 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Word Find</title>
-    <link rel="stylesheet" type="text/css" href="wordfind.css">
+    <link rel="stylesheet" href="wordfind.css">
+    <link rel="stylesheet" href="wordfind-table.css">
+    <link rel="stylesheet" href="wordfind-a11y.css">
 </head>
 <body>
     <h1>WordFind.js by BunKat &amp; Lucas-C</h1>
+
     <div id="main" role="main">
-        <div id="puzzle"></div>
+
+
+        <p class="instructions" id="instructions">
+            Find the words in the wordlist.  You can select the first and last letters of words when you find words.  
+            Keyboard and screen reader users can changing the tabbing order by clicking on a selected letter multiple times.
+        </p>
+        <div role="group" aria-label="Puzzle" aria-describedby="instructions">
+            <table>
+                <thead class="sr-only">
+                    <th scope="col"></th>
+                    <th scope="col" id="col1">Column 1</th>
+                    <th scope="col" id="col2">Column 2</th>
+                    <th scope="col" id="col3">Column 3</th>
+                    <th scope="col" id="col4">Column 4</th>
+                    <th scope="col" id="col5">Column 5</th>
+                    <th scope="col" id="col6">Column 6</th>
+                    <th scope="col" id="col7">Column 7</th>
+                </thead>
+                <tbody id="puzzle">
+
+                </tbody>
+            </table>
+        </div>
         <ul id="words">
             <li><button id="add-word">Add word</button></li>
         </ul>
@@ -37,10 +62,10 @@
             <button id="solve">Solve Puzzle</button>
         </fieldset>
     </div>
-
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
-    <script type="text/javascript" src="wordfind.js"></script> 
-    <script type="text/javascript" src="wordfindgame.js"></script> 
+    <div id="alert" aria-live="assertive" aria-atomic="true"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+    <script src="wordfind.js"></script> 
+    <script src="wordfindgame.table.kb.mobile.navfocus.js"></script> 
     <script>
     /* Example words setup */
     [
@@ -55,16 +80,16 @@
         'radieuse',
         'sensible',
         'sincere',*/
-        'complice',
+        'complex',
         'creative',
-        'elegante',
-        'farceuse',
-        'joviale',
-        'motivee',
-        'ordonnee',
-        'prudente',
-        'sexy',
-        'tendre',
+        'elegant',
+        'farce',
+        'jovial',
+        'motive',
+        'ordinate',
+        'prudent',
+        'news',
+        'tender',
     ].map(word => WordFindGame.insertWordBefore($('#add-word').parent(), word));
     $('#secret-word').val('LAETITIA');
 
@@ -84,9 +109,12 @@
                 fillBlanks: fillBlanks,
                 allowExtraBlanks: ['none', 'secret-word-plus-blanks'].includes($('#extra-letters').val()),
                 maxAttempts: 100,
+                width: 12,
+                height: 12
             });
         } catch (error) {
             $('#result-message').text(`😞 ${error}, try to specify less ones`).css({color: 'red'});
+            throw(error);
             return;
         }
         wordfind.print(game);
