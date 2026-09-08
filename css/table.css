@@ -1,0 +1,11 @@
+
+/* Table-based grid support */
+#puzzle table {
+    border-collapse: collapse; border: 0;
+}
+#puzzle td {
+    padding: 0; margin: 0; border: 0;
+}
+#puzzle td > .puzzleSquare {
+    display: inline-block;
+}
