@@ -14,7 +14,35 @@
       Utilizies <a href="https://github.com/julie-gabler/wordfind-original/blob/master/wordfindgame.js">Wordfind.js by BunKat &amp; Lucas-C</a>
     </p>
     <div class="word-search-wrapper">
-        <div id="puzzle"></div>
+        <div class="original-wrapper">
+            <h2>Original Version (wordfindgame.js)</h2>
+            <div id="puzzle-original"></div>
+        </div>
+        <div class="table-wrapper">
+            <h2>Table version</h2>
+            <p class="instructions" id="instructions">
+                Find the words in the wordlist.  You can select the first and last letters of words when you find words.  
+                Keyboard and screen reader users can changing the tabbing order by clicking on a selected letter multiple times.
+            </p>
+            <div role="group" aria-label="Puzzle" aria-describedby="instructions">
+            <table>
+                <thead class="sr-only">
+                    <th scope="col"></th>
+                    <th scope="col" id="col1">Column 1</th>
+                    <th scope="col" id="col2">Column 2</th>
+                    <th scope="col" id="col3">Column 3</th>
+                    <th scope="col" id="col4">Column 4</th>
+                    <th scope="col" id="col5">Column 5</th>
+                    <th scope="col" id="col6">Column 6</th>
+                    <th scope="col" id="col7">Column 7</th>
+                </thead>
+                <tbody id="puzzle-table">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
         <ul id="words">
             <li><button id="add-word">Add word</button></li>
         </ul>
@@ -59,16 +87,16 @@
         'radieuse',
         'sensible',
         'sincere',*/
-        'complice',
+        'complex',
         'creative',
-        'elegante',
-        'farceuse',
-        'joviale',
-        'motivee',
-        'ordonnee',
-        'prudente',
-        'sexy',
-        'tendre',
+        'elegant',
+        'farce',
+        'jovial',
+        'motive',
+        'ordinate',
+        'prudent',
+        'news',
+        'tender',
     ].map(word => WordFindGame.insertWordBefore($('#add-word').parent(), word));
     $('#secret-word').val('LAETITIA');
 
@@ -82,7 +110,7 @@
             fillBlanks = $('#secret-word').val();
         }
         try {
-            game = new WordFindGame('#puzzle', {
+            game = new WordFindGame('#puzzle-original', {
                 allowedMissingWords: +$('#allowed-missing-words').val(),
                 maxGridGrowth: +$('#max-grid-growth').val(),
                 fillBlanks: fillBlanks,
