@@ -5,3 +5,12 @@ The core `wordfind.js` library contains no dependencies and will work both in th
 This is a fork of https://github.com/bunkat/wordfind allowing to specify the filling letters you want.
 
 Check out the sample game at http://Lucas-C.github.com/wordfind/.
+
+Keyboard support:
+- `tab`:  move the focus to the next letter
+- `shift + tab`: move the focus to the previous letter
+- `enter`/`space`: to select the focused letter
+  - `left` / `right` arrows: move the focus to the next or previous letter starting from the selected letter
+  - `tab` / `shift + tab`: move the focus to the next or previous letter starting from the selected letter
+  - `enter` / `space` after intitally selecting a letter: ends the word selection. If the word is correct, the word will be highlighted. Otherwise all letters will be unselected.
+- `ESC`: unselected the current selection.
