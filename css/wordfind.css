@@ -24,18 +24,13 @@ body {
 /**
 * Styles for the puzzle
 */
-.table-wrapper {
-  margin-top: 34em;
-}
-
-#puzzle-original, #puzzle-table {
+#puzzle {
   display: inline-block;
   border: 1px solid black;
   padding: 3vw;
 }
 
-#puzzle-original > div,
-#puzzle-table > div { /* rows */
+#puzzle > div { /* rows */
   width: 100%;
   margin: 0 auto;
 }
@@ -50,7 +45,7 @@ body {
   font: 5vw sans-serif;
 }
 @media only screen and (min-width: 600px) {
-  #puzzle-original, #puzzle-table {
+  #puzzle {
     float: left;
     padding: 1rem;
   }
@@ -66,23 +61,23 @@ button::-moz-focus-inner {
 }
 
 /* indicates when a square has been selected */
-#puzzle-original .selected, #puzzle-table .selected {
+#puzzle .selected {
   background-color: orange;
 }
 
 /* indicates that the square is part of a word that has been found */ 
-#puzzle-original .found, #puzzle-table .found {
+#puzzle .found {
   background-color: blue;
   color: white;
 }
 
-#puzzle-original .solved, #puzzle-table .solved {
+#puzzle .solved {
   background-color: purple;
   color: white;
 }
 
 /* indicates that all words have been found */
-#puzzle-original .complete, #puzzle-table .complete {
+#puzzle .complete {
   background-color: green;
 }
 
@@ -152,5 +147,3 @@ select {
 #result-message {
   font-size: 1.2em;
 }
-
-.original-wrapper {}
